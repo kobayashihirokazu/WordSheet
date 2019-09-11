@@ -1,0 +1,376 @@
+  [1m[35m (730.8ms)[0m  [1m[35mCREATE DATABASE "wordsheet_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (501.7ms)[0m  [1m[35mCREATE DATABASE "wordsheet_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-09-11 20:08:28 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (5.8ms)
+Completed 200 OK in 25ms (Views: 14.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (64.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (39.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1408856087032200765)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateWords (20190911114935)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE TABLE "words" ("id" bigserial primary key, "name" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190911114935_create_words.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (3.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911114935"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-11 11:50:51.277889"], ["updated_at", "2019-09-11 11:50:51.277889"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1408856087032200765)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-09-11 20:59:21 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (uninitialized constant TasksController):
+  
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant'
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache'
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant'
+bootsnap (1.4.5) lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.3) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.3) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.3) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.3) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (5.2.3) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.3) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2019-09-11 21:00:07 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  Rendered words/index.html.slim within layouts/application (13.7ms)
+Completed 200 OK in 3227ms (Views: 3225.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-11 21:13:16 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  Rendered words/index.html.slim within layouts/application (326.3ms)
+Completed 500 Internal Server Error in 332ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `word' for #<#<Class:0x00007f8e5f3c4fe8>:0x00007f8e5e6436a8>):
+     6: table.table.table-hover
+     7:   thead.thead-default
+     8:     tr
+     9:       th= word.human_attribute_name(:name)
+    10:       th= word.human_attribute_name(:created_at)
+    11:       th
+    12:   tbody
+  
+app/views/words/index.html.slim:9:in `_app_views_words_index_html_slim__3653680707477637046_70124729936800'
+Started GET "/" for ::1 at 2019-09-11 21:15:13 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  Rendered words/index.html.slim within layouts/application (165.7ms)
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:       th= Word.human_attribute_name(:created_at)
+    11:       th
+    12:   tbody
+    13:     - @words.each do |word|
+    14:       tr
+    15:         td= link_to word.name, word
+    16:         td= word.created_at
+  
+app/views/words/index.html.slim:13:in `_app_views_words_index_html_slim__3653680707477637046_70124730478560'
+Started GET "/" for ::1 at 2019-09-11 21:16:24 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (3.2ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  ↳ app/views/words/index.html.slim:13
+  Rendered words/index.html.slim within layouts/application (13.3ms)
+Completed 500 Internal Server Error in 447ms (ActiveRecord: 7.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x00007f8e5f73f0b0>:0x00007f8e5f73d3c8>
+Did you mean?  current_page?):
+    12:       .navbar-brand Wordsheet
+    13: 
+    14:       ul.navbar-nav.ml-auto
+    15:         - if current_user
+    16:           li.nav-item= link_to 'タスク一覧', tasks_path, class: 'nav-link'
+    17:           - if current_user.admin?
+    18:             li.nav-item= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
+  
+app/views/layouts/application.html.slim:15:in `_app_views_layouts_application_html_slim___1087862764914914716_70124687691800'
+Started GET "/" for ::1 at 2019-09-11 21:17:24 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  ↳ app/views/words/index.html.slim:13
+  Rendered words/index.html.slim within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 434ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `tasks_path' for #<#<Class:0x00007f8e5f73f0b0>:0x00007f8e5aa8a378>
+Did you mean?  asset_path):
+    12:       .navbar-brand Wordsheet
+    13: 
+    14:       ul.navbar-nav.ml-auto
+    15:         li.nav-item= link_to 'タスク一覧', tasks_path, class: 'nav-link'
+    16:         / - if current_user
+    17:         /   li.nav-item= link_to 'タスク一覧', tasks_path, class: 'nav-link'
+    18:         /   - if current_user.admin?
+  
+app/views/layouts/application.html.slim:15:in `_app_views_layouts_application_html_slim___1087862764914914716_70124691672800'
+Started GET "/" for ::1 at 2019-09-11 21:17:53 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  ↳ app/views/words/index.html.slim:13
+  Rendered words/index.html.slim within layouts/application (19.6ms)
+Completed 200 OK in 51ms (Views: 49.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/words/new" for ::1 at 2019-09-11 21:22:48 +0900
+Processing by WordsController#new as HTML
+  Rendering words/new.html.slim within layouts/application
+  Rendered words/_form.html.slim (4.5ms)
+  Rendered words/new.html.slim within layouts/application (10.3ms)
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 49.6ms)
+
+
+  
+SyntaxError (/Users/kobayashihirokazu/portfolio/wordsheet/app/views/words/_form.html.slim:6: syntax error, unexpected ','
+..._controls1 = form_with model: , local: true do |f|; 
+...                              ^
+/Users/kobayashihirokazu/portfolio/wordsheet/app/views/words/_form.html.slim:15: syntax error, unexpected ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/words/_form.html.slim:6: syntax error, unexpected ','
+app/views/words/_form.html.slim:15: syntax error, unexpected ensure, expecting end-of-input
+app/views/words/new.html.slim:6:in `_app_views_words_new_html_slim__436311834967569820_70124731293700'
+Started GET "/words/new" for ::1 at 2019-09-11 21:26:22 +0900
+Processing by WordsController#new as HTML
+  Rendering words/new.html.slim within layouts/application
+  Rendered words/_form.html.slim (35.5ms)
+  Rendered words/new.html.slim within layouts/application (41.1ms)
+Completed 200 OK in 233ms (Views: 229.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/words" for ::1 at 2019-09-11 21:26:59 +0900
+Processing by WordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vaa67xk28ADvFpgRjX9gTY1dDrBUhPTDvn8K8DnsJpjfmEibjpQSosmLWyUAbgFvlNAs46lXywlUWbzgmQmfSg==", "word"=>{"name"=>"a", "description"=>"aa"}, "commit"=>"登録する"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/words_controller.rb:23
+  [1m[36mWord Create (52.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "a"], ["description", "aa"], ["created_at", "2019-09-11 12:26:59.229229"], ["updated_at", "2019-09-11 12:26:59.229229"]]
+  ↳ app/controllers/words_controller.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/words_controller.rb:23
+Redirected to http://localhost:3000/words/1
+Completed 302 Found in 58ms (ActiveRecord: 53.5ms)
+
+
+Started GET "/words/1" for ::1 at 2019-09-11 21:26:59 +0900
+Processing by WordsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWord Load (40.7ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  Rendering words/show.html.slim within layouts/application
+  Rendered words/show.html.slim within layouts/application (307.0ms)
+Completed 500 Internal Server Error in 610ms (ActiveRecord: 41.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `word' for #<#<Class:0x00007f8e5f6a7878>:0x00007f8e5f6fa190>
+Did you mean?  @word):
+     5: table.table.table-hover
+     6:   tbody
+     7:     tr
+     8:       th= word.human_attribute_name(:id)
+     9:       td= @word.id
+    10:     tr
+    11:       th= word.human_attribute_name(:name)
+  
+app/views/words/show.html.slim:8:in `_app_views_words_show_html_slim__2141267868076542728_70124731618600'
+Started GET "/words/1" for ::1 at 2019-09-11 21:28:23 +0900
+Processing by WordsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWord Load (0.5ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  Rendering words/show.html.slim within layouts/application
+  Rendered words/show.html.slim within layouts/application (163.1ms)
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `auto_link' for #<#<Class:0x00007f8e5f6a7878>:0x00007f8e5f689f58>
+Did you mean?  autoload):
+    12:       td= @word.name
+    13:     tr
+    14:       th= Word.human_attribute_name(:description)
+    15:       td= auto_link(simple_format(h(@word.description), {}, sanitize: false, wrapper_tag: "div"))
+    16:     tr
+    17:       th= Word.human_attribute_name(:created_at)
+    18:       td= @word.created_at
+  
+app/views/words/show.html.slim:15:in `_app_views_words_show_html_slim__2141267868076542728_70124731388880'
+Started GET "/words/1" for ::1 at 2019-09-11 21:30:49 +0900
+Processing by WordsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  Rendering words/show.html.slim within layouts/application
+  Rendered words/show.html.slim within layouts/application (5.0ms)
+Completed 200 OK in 56ms (Views: 53.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/words/1/edit" for ::1 at 2019-09-11 21:33:09 +0900
+Processing by WordsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWord Load (0.5ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  Rendering words/edit.html.slim within layouts/application
+  Rendered words/_form.html.slim (5.9ms)
+  Rendered words/edit.html.slim within layouts/application (10.0ms)
+Completed 200 OK in 51ms (Views: 46.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/words/1" for ::1 at 2019-09-11 21:33:17 +0900
+Processing by WordsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0Jtf0mWr4oYUjqmeXcUQZyMfYYzZvIu55oNJwbxdi8uypa2m8gkAJDITaqrQ1HFFOpJD3yRvtHMMpf/RHLgyGQ==", "id"=>"1"}
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/words_controller.rb:36
+  [1m[36mWord Destroy (11.5ms)[0m  [1m[31mDELETE FROM "words" WHERE "words"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/words_controller.rb:36
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/words_controller.rb:36
+Redirected to http://localhost:3000/words
+Completed 302 Found in 16ms (ActiveRecord: 12.6ms)
+
+
+Started GET "/words" for ::1 at 2019-09-11 21:33:17 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  ↳ app/views/words/index.html.slim:13
+  Rendered words/index.html.slim within layouts/application (4.8ms)
+Completed 200 OK in 30ms (Views: 27.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/words/new" for ::1 at 2019-09-11 21:34:03 +0900
+Processing by WordsController#new as HTML
+  Rendering words/new.html.slim within layouts/application
+  Rendered words/_form.html.slim (4.2ms)
+  Rendered words/new.html.slim within layouts/application (7.7ms)
+Completed 200 OK in 38ms (Views: 35.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/words" for ::1 at 2019-09-11 21:34:10 +0900
+Processing by WordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JvWSNmk4zKwDsALDGDO2kyHJKbKvJlrKaqjGQaqZmJC66irkbz+WgcDI02a50ckSrR60OcGfryUW+ua40+NMnw==", "word"=>{"name"=>"あ", "description"=>"あ"}, "commit"=>"登録する"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/words_controller.rb:23
+  [1m[36mWord Create (8.8ms)[0m  [1m[32mINSERT INTO "words" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "あ"], ["description", "あ"], ["created_at", "2019-09-11 12:34:10.017557"], ["updated_at", "2019-09-11 12:34:10.017557"]]
+  ↳ app/controllers/words_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/words_controller.rb:23
+Redirected to http://localhost:3000/words/2
+Completed 302 Found in 17ms (ActiveRecord: 9.6ms)
+
+
+Started GET "/words/2" for ::1 at 2019-09-11 21:34:10 +0900
+Processing by WordsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  Rendering words/show.html.slim within layouts/application
+  Rendered words/show.html.slim within layouts/application (11.5ms)
+Completed 200 OK in 57ms (Views: 54.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/words" for ::1 at 2019-09-11 21:34:13 +0900
+Processing by WordsController#index as HTML
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  ↳ app/views/words/index.html.slim:13
+  Rendered words/index.html.slim within layouts/application (6.3ms)
+Completed 200 OK in 34ms (Views: 32.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/words/2" for ::1 at 2019-09-11 21:34:21 +0900
+Processing by WordsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:48
+  Rendering words/show.html.slim within layouts/application
+  Rendered words/show.html.slim within layouts/application (6.7ms)
+Completed 200 OK in 41ms (Views: 36.7ms | ActiveRecord: 0.4ms)
+
+
