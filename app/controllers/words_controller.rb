@@ -30,8 +30,11 @@ class WordsController < ApplicationController
   end
 
   def update
-    @word.update!(word_params)
-    redirect_to words_url, notice: "タスク「#{@word.name}」を更新しました。"
+    if @word.update(word_params)
+      redirect_to words_url, notice: "タスク「#{@word.name}」を更新しました。"
+    else
+      render :new
+    end
   end
 
   def destroy
