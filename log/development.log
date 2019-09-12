@@ -2120,3 +2120,381 @@ Processing by WordsController#index as HTML
 Completed 200 OK in 36ms (Views: 32.4ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/words" for ::1 at 2019-09-12 15:43:37 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mWord Load (0.6ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 17.4ms)
+
+
+  
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `ransack' for #<Word::ActiveRecord_Associations_CollectionProxy:0x00007fbeb7f49b38>):
+  
+app/controllers/words_controller.rb:7:in `index'
+Started GET "/" for ::1 at 2019-09-12 15:43:38 +0900
+Processing by WordsController#top as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/top.html.slim within layouts/application
+  Rendered words/top.html.slim within layouts/application (3.9ms)
+Started GET "/" for ::1 at 2019-09-12 15:43:38 +0900
+Processing by WordsController#top as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/top.html.slim within layouts/application
+  Rendered words/top.html.slim within layouts/application (2.3ms)
+Completed 200 OK in 78ms (Views: 72.6ms | ActiveRecord: 0.5ms)
+
+
+Completed 200 OK in 68ms (Views: 62.1ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/logout" for ::1 at 2019-09-12 15:43:40 +0900
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"279gunhptEx5pDcJleXEV0xxXuPpdVEgqfmL7ehvQepOR7HilIJln02PYBDDsrimMBGRjle2Zmp1SkEwihY5lQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 15:43:40 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 15:43:40 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.8ms)
+Completed 200 OK in 34ms (Views: 32.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-09-12 15:43:43 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"INKmCkaMJkAl7prHHs4/mvNZmhnLLWqWioMY1jMFvoVF9D2z7MpN4A2vT3BuVkU0u+J4Lv6NL8p+KHrLJq5tcg==", "session"=>{"email"=>"a", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Redirected to http://localhost:3000/words
+Completed 302 Found in 326ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:43:43 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mWord Load (0.5ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `ransack' for #<Word::ActiveRecord_Associations_CollectionProxy:0x00007fbeb9394340>):
+  
+app/controllers/words_controller.rb:7:in `index'
+Started GET "/words" for ::1 at 2019-09-12 15:44:23 +0900
+  [1m[35m (18.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (3.3ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered words/index.html.slim within layouts/application (202.7ms)
+Completed 500 Internal Server Error in 309ms (ActiveRecord: 12.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `seaech_field' for #<Ransack::Helpers::FormBuilder:0x00007ffa0c51d980>
+Did you mean?  search_field
+               search_fields):
+    4:   .form-group.row
+    5:     = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    6:     .col-sm-10  
+    7:       = f.seaech_field :name_cont, class: 'form-control'
+    8:   .form-group
+    9:     = f.submit class: 'btn btn-outline-primary'
+   10: 
+  
+app/views/words/index.html.slim:7:in `block in _app_views_words_index_html_slim___3855998045397596045_70355953054540'
+app/views/words/index.html.slim:3:in `_app_views_words_index_html_slim___3855998045397596045_70355953054540'
+Started GET "/words" for ::1 at 2019-09-12 15:44:27 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered words/index.html.slim within layouts/application (212.0ms)
+Completed 500 Internal Server Error in 219ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `seaech_field' for #<Ransack::Helpers::FormBuilder:0x00007ffa0b635e40>
+Did you mean?  search_field
+               search_fields):
+    4:   .form-group.row
+    5:     = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    6:     .col-sm-10  
+    7:       = f.seaech_field :name_cont, class: 'form-control'
+    8:   .form-group
+    9:     = f.submit class: 'btn btn-outline-primary'
+   10: 
+  
+app/views/words/index.html.slim:7:in `block in _app_views_words_index_html_slim___3855998045397596045_70355984620500'
+app/views/words/index.html.slim:3:in `_app_views_words_index_html_slim___3855998045397596045_70355984620500'
+Started GET "/" for ::1 at 2019-09-12 15:44:28 +0900
+Processing by WordsController#top as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/top.html.slim within layouts/application
+  Rendered words/top.html.slim within layouts/application (2.7ms)
+Started GET "/" for ::1 at 2019-09-12 15:44:28 +0900
+Processing by WordsController#top as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/top.html.slim within layouts/application
+  Rendered words/top.html.slim within layouts/application (2.7ms)
+Completed 200 OK in 256ms (Views: 251.0ms | ActiveRecord: 1.0ms)
+
+
+Completed 200 OK in 645ms (Views: 641.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:44:31 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Word Load (0.0ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered words/index.html.slim within layouts/application (189.0ms)
+Completed 500 Internal Server Error in 195ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `seaech_field' for #<Ransack::Helpers::FormBuilder:0x00007ffa0cc371f8>
+Did you mean?  search_field
+               search_fields):
+    4:   .form-group.row
+    5:     = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    6:     .col-sm-10  
+    7:       = f.seaech_field :name_cont, class: 'form-control'
+    8:   .form-group
+    9:     = f.submit class: 'btn btn-outline-primary'
+   10: 
+  
+app/views/words/index.html.slim:7:in `block in _app_views_words_index_html_slim___3855998045397596045_70355966066100'
+app/views/words/index.html.slim:3:in `_app_views_words_index_html_slim___3855998045397596045_70355966066100'
+Started GET "/words" for ::1 at 2019-09-12 15:44:55 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:21
+  Rendered words/index.html.slim within layouts/application (147.5ms)
+Completed 200 OK in 203ms (Views: 198.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/words/new" for ::1 at 2019-09-12 15:44:58 +0900
+Processing by WordsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/new.html.slim within layouts/application
+  Rendered words/_form.html.slim (9.6ms)
+  Rendered words/new.html.slim within layouts/application (14.6ms)
+Completed 200 OK in 76ms (Views: 72.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/words" for ::1 at 2019-09-12 15:45:01 +0900
+Processing by WordsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ifvVEQSV3xtWv7JLJE8ox/QvtivtWsf0MFPIpbfwfAYUuzIyY94G/8IhAPZfIgtOUzWP/E1babLUf5X6HeV1Pg==", "word"=>{"name"=>"aaaa", "description"=>"aa"}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/words_controller.rb:27
+  [1m[36mWord Create (32.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "aaaa"], ["description", "aa"], ["created_at", "2019-09-12 06:45:01.426734"], ["updated_at", "2019-09-12 06:45:01.426734"], ["user_id", 1]]
+  ↳ app/controllers/words_controller.rb:27
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/words_controller.rb:27
+Redirected to http://localhost:3000/words/8
+Completed 302 Found in 40ms (ActiveRecord: 33.5ms)
+
+
+Started GET "/words/8" for ::1 at 2019-09-12 15:45:01 +0900
+Processing by WordsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT  "words".* FROM "words" WHERE "words"."user_id" = $1 AND "words"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/words_controller.rb:54
+  Rendering words/show.html.slim within layouts/application
+  Rendered words/show.html.slim within layouts/application (4.7ms)
+Completed 200 OK in 33ms (Views: 27.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:45:04 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:21
+  Rendered words/index.html.slim within layouts/application (7.5ms)
+Completed 200 OK in 34ms (Views: 29.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/words?utf8=%E2%9C%93&q%5Bname_cont%5D=a&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-12 15:45:14 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"a"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (2.8ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 AND "words"."name" ILIKE '%a%' ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:21
+  Rendered words/index.html.slim within layouts/application (61.4ms)
+Completed 200 OK in 116ms (Views: 109.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:48:20 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:25
+  Rendered words/index.html.slim within layouts/application (11.2ms)
+Completed 200 OK in 79ms (Views: 74.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/words?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=2019-09-12+06%3A45%3A01+UTC&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-12 15:48:27 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"", "created_at_gteq"=>"2019-09-12 06:45:01 UTC"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 AND "words"."created_at" >= '2019-09-12 06:45:01' ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:25
+  Rendered words/index.html.slim within layouts/application (20.9ms)
+Completed 200 OK in 86ms (Views: 70.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:51:26 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:25
+  Rendered words/index.html.slim within layouts/application (14.7ms)
+Completed 200 OK in 92ms (Views: 56.4ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/words?utf8=%E2%9C%93&q%5Bname_cont%5D=d&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-12 15:51:30 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>{"name_cont"=>"d", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 AND "words"."name" ILIKE '%d%' ORDER BY "words"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:25
+  Rendered words/index.html.slim within layouts/application (7.5ms)
+Completed 200 OK in 36ms (Views: 32.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:54:51 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (20.5ms)
+Completed 200 OK in 81ms (Views: 53.7ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 15:55:08 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (7.7ms)
+Completed 200 OK in 37ms (Views: 32.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/words?q%5Bs%5D=name+asc" for ::1 at 2019-09-12 15:55:10 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"q"=>{"s"=>"name asc"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (9.8ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (44.0ms)
+Completed 200 OK in 76ms (Views: 60.6ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/words?q%5Bs%5D=created_at+asc" for ::1 at 2019-09-12 15:55:12 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"q"=>{"s"=>"created_at asc"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (8.0ms)
+Completed 200 OK in 37ms (Views: 31.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/words?q%5Bs%5D=name+asc" for ::1 at 2019-09-12 15:55:16 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"q"=>{"s"=>"name asc"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."name" ASC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (8.7ms)
+Completed 200 OK in 36ms (Views: 31.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/words?q%5Bs%5D=created_at+asc" for ::1 at 2019-09-12 15:55:18 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"q"=>{"s"=>"created_at asc"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 ORDER BY "words"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (14.3ms)
+Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 1.0ms)
+
+

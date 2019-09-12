@@ -2,8 +2,10 @@ class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
   def index
-    @words = current_user.words.recent
+    # @words = current_user.words.recent
     # @words = current_user.words <==>  Word.where(user_id: current_user.id)
+    @q = current_user.words.ransack(params[:q])
+    @words = @q.result(distinct: true)
   end
 
   def show
