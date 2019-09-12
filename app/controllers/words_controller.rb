@@ -2,11 +2,14 @@ class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @words = current_user.words.recent
-    @words = Word.all
+    @words = current_user.words.recent
+    # @words = current_user.words <==>  Word.where(user_id: current_user.id)
   end
 
   def show
+  end
+
+  def top
   end
 
   def new
@@ -17,8 +20,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    # @word = current_user.words.new(word_params)
-    @word = Word.new(word_params)
+    @word = current_user.words.new(word_params)
 
     if @word.save
       redirect_to @word, notice: "タスク「#{@word.name}」を登録しました。"
@@ -44,7 +46,7 @@ class WordsController < ApplicationController
   end
 
   def set_word
-    # @word = current_user.words.find(params[:id])
-    @word = Word.find(params[:id])
+    @word = current_user.words.find(params[:id])
+    # @word = Word.find(params[:id])
   end
 end
