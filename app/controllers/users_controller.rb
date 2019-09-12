@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :login_required, only: [:new, :create]
 
   def index
     @users = User.all
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: "ユーザ「#{@user.name}」を登録しました。"
+      redirect_to login_path, notice: "ユーザ「#{@user.name}」を登録しました。"
     else
       render :new
     end
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :image, :password, :password_confirmation)
   end
 
   def set_user

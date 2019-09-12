@@ -5,7 +5,7 @@ class WordsController < ApplicationController
     # @words = current_user.words.recent
     # @words = current_user.words <==>  Word.where(user_id: current_user.id)
     @q = current_user.words.ransack(params[:q])
-    @words = @q.result(distinct: true)
+    @words = @q.result(distinct: true).page(params[:page])
   end
 
   def show

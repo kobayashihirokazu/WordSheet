@@ -2498,3 +2498,1011 @@ Processing by WordsController#index as HTML
 Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 1.0ms)
 
 
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1408856087032200765)[0m
+  ↳ bin/rails:9
+  [1m[35m (84.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateActiveStorageTables (20190912125033)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (92.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190912125033_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20190912125033_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (53.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20190912125033_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20190912125033_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20190912125033_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190912125033"]]
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (3.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1408856087032200765)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/words" for ::1 at 2019-09-12 22:02:29 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by WordsController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 14ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:02:29 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (23.4ms)
+Completed 200 OK in 677ms (Views: 656.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-09-12 22:02:34 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mxmC4aiDkh4gspIU+xZHuGU1eUp0JaxJKchdG2fn5xM2vJWN04SLBrREuv6DWa2o8vAjxbVQXlx+JchSBHFMRw==", "session"=>{"email"=>"a", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (42.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Redirected to http://localhost:3000/words
+Completed 302 Found in 446ms (ActiveRecord: 49.2ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 22:02:35 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (125.0ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (230.8ms)
+Completed 200 OK in 316ms (Views: 146.6ms | ActiveRecord: 129.8ms)
+
+
+Started GET "/users" for ::1 at 2019-09-12 22:02:49 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.slim:11
+  Rendered users/index.html.slim within layouts/application (15.5ms)
+Completed 200 OK in 108ms (Views: 103.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for ::1 at 2019-09-12 22:02:52 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48
+  Rendering users/show.html.slim within layouts/application
+  [1m[36mActiveStorage::Attachment Load (43.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.slim:15
+  Rendered users/show.html.slim within layouts/application (82.4ms)
+Completed 200 OK in 115ms (Views: 65.2ms | ActiveRecord: 46.0ms)
+
+
+Started GET "/users" for ::1 at 2019-09-12 22:02:56 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.slim:11
+  Rendered users/index.html.slim within layouts/application (5.8ms)
+Completed 200 OK in 38ms (Views: 34.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 22:02:59 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (16.2ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/logout" for ::1 at 2019-09-12 22:03:00 +0900
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YLd20yqDmTmoyC4eCe7tWms36mIlBX+Opc2zm6hcIgvNEmG/UYSAITw+BvRxoQdK/PKw7eRwjZvyICbSy8qJXw=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 22:03:00 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:03:00 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (5.0ms)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:03:01 +0900
+Processing by UsersController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:03:01 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.9ms)
+Completed 200 OK in 35ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:03:05 +0900
+Processing by UsersController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:03:05 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.0ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:03:12 +0900
+Processing by UsersController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:03:12 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.4ms)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:03:13 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.8ms)
+Completed 200 OK in 35ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:10:38 +0900
+Processing by UsersController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:10:38 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.2ms)
+Completed 200 OK in 43ms (Views: 41.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:13:07 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.5ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 22:13:08 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:13:08 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.7ms)
+Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 22:13:08 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:13:08 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.1ms)
+Completed 200 OK in 69ms (Views: 67.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:13:11 +0900
+Processing by UsersController#new as HTML
+  Rendering users/new.html.slim within layouts/application
+  Rendered users/_form.html.slim (14.4ms)
+  Rendered users/new.html.slim within layouts/application (22.8ms)
+Completed 200 OK in 66ms (Views: 47.0ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:17:54 +0900
+Processing by UsersController#new as HTML
+  Rendering users/new.html.slim within layouts/application
+  Rendered users/_form.html.slim (8.2ms)
+  Rendered users/new.html.slim within layouts/application (14.3ms)
+Completed 200 OK in 66ms (Views: 49.5ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users" for ::1 at 2019-09-12 22:17:55 +0900
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:17:55 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.1ms)
+Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 22:17:55 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:17:55 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.4ms)
+Completed 200 OK in 56ms (Views: 55.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 22:17:55 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:17:55 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (5.1ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:17:57 +0900
+Processing by UsersController#new as HTML
+  Rendering users/new.html.slim within layouts/application
+  Rendered users/_form.html.slim (4.4ms)
+  Rendered users/new.html.slim within layouts/application (8.1ms)
+Completed 200 OK in 34ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-09-12 22:18:52 +0900
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RE1SATLalX+Y4HJUJZxrhFqS/dt1G+II34Uw93dnNCgML2fJQAAkKoG99HETKaazR5C77TY1Yd2+Cehg3ERolg==", "user"=>{"name"=>"aa", "email"=>"aa", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa1eb7a1220 @tempfile=#<Tempfile:/var/folders/sd/k1k13tfs3_13ft_hc5mw2mj80000gn/T/RackMultipart20190912-929-16775bo.jpg>, @original_filename="minatomirai_0445.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"minatomirai_0445.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"登録する"}
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:18:52 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.7ms)
+Completed 200 OK in 42ms (Views: 40.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-09-12 22:18:56 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VMlW18fWtFIkWYZRHqRTgoZ1YM2HFl8BqCzy2j9IF7Pa767ZtR5AWCHYA9bCiKF068OtsAxJ6eElf4cuIRTVKA==", "session"=>{"email"=>"aa", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aa"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.8ms)
+Completed 200 OK in 350ms (Views: 28.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for ::1 at 2019-09-12 22:20:54 +0900
+Processing by UsersController#new as HTML
+  Rendering users/new.html.slim within layouts/application
+  Rendered users/_form.html.slim (8.7ms)
+  Rendered users/new.html.slim within layouts/application (15.1ms)
+Completed 200 OK in 76ms (Views: 61.4ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users" for ::1 at 2019-09-12 22:21:12 +0900
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hvAa3QAfgqKauGxqoWkvpG3W86bYSXXJzfAYyC/qkeDOki8VcsUz94Pl6k+X3OKTcNS1kJtn9hysfMBfhMnNXg==", "user"=>{"name"=>"aa", "email"=>"aa", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa1eef8dbe8 @tempfile=#<Tempfile:/var/folders/sd/k1k13tfs3_13ft_hc5mw2mj80000gn/T/RackMultipart20190912-929-2sdqj5.jpg>, @original_filename="minatomirai_0445.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"minatomirai_0445.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"登録する"}
+[36m  Disk Storage (7.5ms) [0m[32mUploaded file to key: jGpAGXo8iaWmWmVuf2vJkoTR (checksum: Ssv2XeAA4bKOlt6Bhfh8TA==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[36mActiveStorage::Blob Create (53.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "jGpAGXo8iaWmWmVuf2vJkoTR"], ["filename", "minatomirai_0445.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 76081], ["checksum", "Ssv2XeAA4bKOlt6Bhfh8TA=="], ["created_at", "2019-09-12 13:21:12.633498"]]
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:22
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aa"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22
+  [1m[35m (8.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:22
+  Rendering users/new.html.slim within layouts/application
+  Rendered users/_form.html.slim (5.7ms)
+  Rendered users/new.html.slim within layouts/application (11.0ms)
+Completed 200 OK in 1010ms (Views: 38.0ms | ActiveRecord: 74.2ms)
+
+
+Started POST "/users" for ::1 at 2019-09-12 22:21:40 +0900
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tMEejl+kZgB6+wEhYrjRY5AN5Uv88iNXKZzch7baqrg65+aALWySCn96hKa+lCOV/bsoNnetlbekz6lzqIZoIw==", "user"=>{"name"=>"bb", "email"=>"bb", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa1efd5f7d0 @tempfile=#<Tempfile:/var/folders/sd/k1k13tfs3_13ft_hc5mw2mj80000gn/T/RackMultipart20190912-929-1kt5049.jpg>, @original_filename="minatomirai_0445.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[image]\"; filename=\"minatomirai_0445.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"登録する"}
+[36m  Disk Storage (1.6ms) [0m[32mUploaded file to key: ZT43r6eixAXZM2rDWn82CkK2 (checksum: Ssv2XeAA4bKOlt6Bhfh8TA==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "ZT43r6eixAXZM2rDWn82CkK2"], ["filename", "minatomirai_0445.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 76081], ["checksum", "Ssv2XeAA4bKOlt6Bhfh8TA=="], ["created_at", "2019-09-12 13:21:40.360508"]]
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (40.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:22
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bb"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22
+  [1m[36mUser Create (9.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "bb"], ["email", "bb"], ["password_digest", "$2a$12$8MeG6dhLmeSl5N84VB9UtejHSa6Mw5t.oLa81MIwW.h3Cz.pPm6Ja"], ["created_at", "2019-09-12 13:21:40.729819"], ["updated_at", "2019-09-12 13:21:40.729819"]]
+  ↳ app/controllers/users_controller.rb:22
+  [1m[36mActiveStorage::Attachment Create (5.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 4], ["blob_id", 2], ["created_at", "2019-09-12 13:21:40.741301"]]
+  ↳ app/controllers/users_controller.rb:22
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2019-09-12 13:21:40.748769"], ["id", 4]]
+  ↳ app/controllers/users_controller.rb:22
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:22
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: be51cfe5-bfa8-47fa-b294-3011144c05de) to Async(default) with arguments: #<GlobalID:0x00007fa1ebcd0548 @uri=#<URI::GID gid://wordsheet/ActiveStorage::Blob/2>>
+Redirected to http://localhost:3000/login
+Completed 302 Found in 460ms (ActiveRecord: 60.4ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:21:40 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (6.1ms)
+Completed 200 OK in 48ms (Views: 46.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de] Performing ActiveStorage::AnalyzeJob (Job ID: be51cfe5-bfa8-47fa-b294-3011144c05de) from Async(default) with arguments: #<GlobalID:0x00007fa1f0fd47f8 @uri=#<URI::GID gid://wordsheet/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: ZT43r6eixAXZM2rDWn82CkK2[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de]   ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de]   ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de]   [1m[35m (40.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de]   ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [be51cfe5-bfa8-47fa-b294-3011144c05de] Performed ActiveStorage::AnalyzeJob (Job ID: be51cfe5-bfa8-47fa-b294-3011144c05de) from Async(default) in 129.42ms
+Started POST "/login" for ::1 at 2019-09-12 22:21:44 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p3WbrgDpCKlSruIRYkopvMhKLcri+W6VguWXxSR0eXopU2OgciH8o1cvZ5a+ZttKpfzgt2mm2HUPtuIxOii74Q==", "session"=>{"email"=>"bb", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bb"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Redirected to http://localhost:3000/words
+Completed 302 Found in 338ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 22:21:45 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[36mWord Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/words/index.html.slim:27
+  Rendered words/index.html.slim within layouts/application (54.5ms)
+Completed 200 OK in 97ms (Views: 81.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users" for ::1 at 2019-09-12 22:21:47 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.slim:11
+  Rendered users/index.html.slim within layouts/application (8.6ms)
+Completed 200 OK in 51ms (Views: 38.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/4" for ::1 at 2019-09-12 22:21:51 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:49
+  Rendering users/show.html.slim within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.slim:15
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.slim:15
+  Rendered users/show.html.slim within layouts/application (12.1ms)
+Completed 200 OK in 44ms (Views: 37.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8882032df33373330a512b77ebec38e2f179841d/minatomirai_0445.jpg" for ::1 at 2019-09-12 22:21:51 +0900
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8882032df33373330a512b77ebec38e2f179841d", "filename"=>"minatomirai_0445"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (3.2ms) [0m[34mGenerated URL for file at key: ZT43r6eixAXZM2rDWn82CkK2 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRXbFEwTTNJMlpXbDRRVmhhVFRKeVJGZHVPREpEYTBzeUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSlRhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGliV2x1WVhSdmJXbHlZV2xmTURRME5TNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjIxcGJtRjBiMjFwY21GcFh6QTBORFV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMTJUMTM6MjY6NTEuNDE0WiIsInB1ciI6ImJsb2Jfa2V5In19--3e1634602874c9810e15c9b1071af4a1d6cf6677/minatomirai_0445.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22minatomirai_0445.jpg%22%3B+filename%2A%3DUTF-8%27%27minatomirai_0445.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRXbFEwTTNJMlpXbDRRVmhhVFRKeVJGZHVPREpEYTBzeUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSlRhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGliV2x1WVhSdmJXbHlZV2xmTURRME5TNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjIxcGJtRjBiMjFwY21GcFh6QTBORFV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMTJUMTM6MjY6NTEuNDE0WiIsInB1ciI6ImJsb2Jfa2V5In19--3e1634602874c9810e15c9b1071af4a1d6cf6677/minatomirai_0445.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22minatomirai_0445.jpg%22%3B+filename%2A%3DUTF-8%27%27minatomirai_0445.jpg
+Completed 302 Found in 8ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRXbFEwTTNJMlpXbDRRVmhhVFRKeVJGZHVPREpEYTBzeUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSlRhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGliV2x1WVhSdmJXbHlZV2xmTURRME5TNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjIxcGJtRjBiMjFwY21GcFh6QTBORFV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMTJUMTM6MjY6NTEuNDE0WiIsInB1ciI6ImJsb2Jfa2V5In19--3e1634602874c9810e15c9b1071af4a1d6cf6677/minatomirai_0445.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22minatomirai_0445.jpg%22%3B+filename%2A%3DUTF-8%27%27minatomirai_0445.jpg" for ::1 at 2019-09-12 22:21:51 +0900
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"minatomirai_0445.jpg\"; filename*=UTF-8''minatomirai_0445.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRXbFEwTTNJMlpXbDRRVmhhVFRKeVJGZHVPREpEYTBzeUJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSlRhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGliV2x1WVhSdmJXbHlZV2xmTURRME5TNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjIxcGJtRjBiMjFwY21GcFh6QTBORFV1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMTJUMTM6MjY6NTEuNDE0WiIsInB1ciI6ImJsb2Jfa2V5In19--3e1634602874c9810e15c9b1071af4a1d6cf6677", "filename"=>"minatomirai_0445"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/logout" for ::1 at 2019-09-12 22:21:56 +0900
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fiYqSpKU6YEytUoTmsZgVDn1n459ctE0a8v0VJRWPe7wANJE4Fwdizc0z5RG6pKiVENS8/YtZ9TmmIGgigr/dQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 22:21:56 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:21:56 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (3.8ms)
+Completed 200 OK in 31ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 22:41:39 +0900
+  [1m[35m (41.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/kobayashihirokazu/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (62.2ms)
+Completed 200 OK in 667ms (Views: 653.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-09-12 22:41:42 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SrtUnP4XQL4uJDAvml+TYSVn/+5x4x2mnT6vZ9PTeFZblGnQ7UMu2erQ9CHghxOfK+u+uvQTnXPPAP0v92edUQ==", "session"=>{"email"=>"a", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8
+Redirected to http://localhost:3000/words
+Completed 302 Found in 349ms (ActiveRecord: 6.3ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 22:41:43 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (166.1ms)
+Completed 200 OK in 269ms (Views: 236.8ms | ActiveRecord: 7.1ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (44.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "0"], ["created_at", "2019-09-12 13:44:15.856086"], ["updated_at", "2019-09-12 13:44:15.856086"], ["user_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "1"], ["created_at", "2019-09-12 13:44:15.904581"], ["updated_at", "2019-09-12 13:44:15.904581"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "2"], ["created_at", "2019-09-12 13:44:15.908179"], ["updated_at", "2019-09-12 13:44:15.908179"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "3"], ["created_at", "2019-09-12 13:44:15.910876"], ["updated_at", "2019-09-12 13:44:15.910876"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "4"], ["created_at", "2019-09-12 13:44:15.914114"], ["updated_at", "2019-09-12 13:44:15.914114"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "5"], ["created_at", "2019-09-12 13:44:15.917495"], ["updated_at", "2019-09-12 13:44:15.917495"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "6"], ["created_at", "2019-09-12 13:44:15.920127"], ["updated_at", "2019-09-12 13:44:15.920127"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "7"], ["created_at", "2019-09-12 13:44:15.922774"], ["updated_at", "2019-09-12 13:44:15.922774"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "8"], ["created_at", "2019-09-12 13:44:15.925238"], ["updated_at", "2019-09-12 13:44:15.925238"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "9"], ["created_at", "2019-09-12 13:44:15.928073"], ["updated_at", "2019-09-12 13:44:15.928073"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "10"], ["created_at", "2019-09-12 13:44:15.930473"], ["updated_at", "2019-09-12 13:44:15.930473"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "11"], ["created_at", "2019-09-12 13:44:15.933465"], ["updated_at", "2019-09-12 13:44:15.933465"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "12"], ["created_at", "2019-09-12 13:44:15.935975"], ["updated_at", "2019-09-12 13:44:15.935975"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "13"], ["created_at", "2019-09-12 13:44:15.938861"], ["updated_at", "2019-09-12 13:44:15.938861"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "14"], ["created_at", "2019-09-12 13:44:15.941578"], ["updated_at", "2019-09-12 13:44:15.941578"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "15"], ["created_at", "2019-09-12 13:44:15.944342"], ["updated_at", "2019-09-12 13:44:15.944342"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "16"], ["created_at", "2019-09-12 13:44:15.946932"], ["updated_at", "2019-09-12 13:44:15.946932"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.7ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "17"], ["created_at", "2019-09-12 13:44:15.949650"], ["updated_at", "2019-09-12 13:44:15.949650"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "18"], ["created_at", "2019-09-12 13:44:15.953021"], ["updated_at", "2019-09-12 13:44:15.953021"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "19"], ["created_at", "2019-09-12 13:44:15.955560"], ["updated_at", "2019-09-12 13:44:15.955560"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "20"], ["created_at", "2019-09-12 13:44:15.958417"], ["updated_at", "2019-09-12 13:44:15.958417"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "21"], ["created_at", "2019-09-12 13:44:15.960921"], ["updated_at", "2019-09-12 13:44:15.960921"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "22"], ["created_at", "2019-09-12 13:44:15.963923"], ["updated_at", "2019-09-12 13:44:15.963923"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "23"], ["created_at", "2019-09-12 13:44:15.966670"], ["updated_at", "2019-09-12 13:44:15.966670"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "24"], ["created_at", "2019-09-12 13:44:15.969257"], ["updated_at", "2019-09-12 13:44:15.969257"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "25"], ["created_at", "2019-09-12 13:44:15.973154"], ["updated_at", "2019-09-12 13:44:15.973154"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "26"], ["created_at", "2019-09-12 13:44:15.977151"], ["updated_at", "2019-09-12 13:44:15.977151"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "27"], ["created_at", "2019-09-12 13:44:15.982168"], ["updated_at", "2019-09-12 13:44:15.982168"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "28"], ["created_at", "2019-09-12 13:44:15.987414"], ["updated_at", "2019-09-12 13:44:15.987414"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "29"], ["created_at", "2019-09-12 13:44:15.991529"], ["updated_at", "2019-09-12 13:44:15.991529"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "30"], ["created_at", "2019-09-12 13:44:15.995528"], ["updated_at", "2019-09-12 13:44:15.995528"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "31"], ["created_at", "2019-09-12 13:44:15.998657"], ["updated_at", "2019-09-12 13:44:15.998657"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "32"], ["created_at", "2019-09-12 13:44:16.002151"], ["updated_at", "2019-09-12 13:44:16.002151"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "33"], ["created_at", "2019-09-12 13:44:16.005514"], ["updated_at", "2019-09-12 13:44:16.005514"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "34"], ["created_at", "2019-09-12 13:44:16.008654"], ["updated_at", "2019-09-12 13:44:16.008654"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "35"], ["created_at", "2019-09-12 13:44:16.012816"], ["updated_at", "2019-09-12 13:44:16.012816"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "36"], ["created_at", "2019-09-12 13:44:16.016790"], ["updated_at", "2019-09-12 13:44:16.016790"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.7ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "37"], ["created_at", "2019-09-12 13:44:16.021416"], ["updated_at", "2019-09-12 13:44:16.021416"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "38"], ["created_at", "2019-09-12 13:44:16.024372"], ["updated_at", "2019-09-12 13:44:16.024372"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "39"], ["created_at", "2019-09-12 13:44:16.028136"], ["updated_at", "2019-09-12 13:44:16.028136"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "40"], ["created_at", "2019-09-12 13:44:16.031603"], ["updated_at", "2019-09-12 13:44:16.031603"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "41"], ["created_at", "2019-09-12 13:44:16.035854"], ["updated_at", "2019-09-12 13:44:16.035854"], ["user_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "42"], ["created_at", "2019-09-12 13:44:16.040639"], ["updated_at", "2019-09-12 13:44:16.040639"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (1.0ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "43"], ["created_at", "2019-09-12 13:44:16.043014"], ["updated_at", "2019-09-12 13:44:16.043014"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "44"], ["created_at", "2019-09-12 13:44:16.046407"], ["updated_at", "2019-09-12 13:44:16.046407"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "45"], ["created_at", "2019-09-12 13:44:16.050565"], ["updated_at", "2019-09-12 13:44:16.050565"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "46"], ["created_at", "2019-09-12 13:44:16.053413"], ["updated_at", "2019-09-12 13:44:16.053413"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "47"], ["created_at", "2019-09-12 13:44:16.057591"], ["updated_at", "2019-09-12 13:44:16.057591"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "48"], ["created_at", "2019-09-12 13:44:16.062759"], ["updated_at", "2019-09-12 13:44:16.062759"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "49"], ["created_at", "2019-09-12 13:44:16.067930"], ["updated_at", "2019-09-12 13:44:16.067930"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "50"], ["created_at", "2019-09-12 13:44:16.072595"], ["updated_at", "2019-09-12 13:44:16.072595"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "51"], ["created_at", "2019-09-12 13:44:16.076926"], ["updated_at", "2019-09-12 13:44:16.076926"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "52"], ["created_at", "2019-09-12 13:44:16.079675"], ["updated_at", "2019-09-12 13:44:16.079675"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "53"], ["created_at", "2019-09-12 13:44:16.084280"], ["updated_at", "2019-09-12 13:44:16.084280"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "54"], ["created_at", "2019-09-12 13:44:16.088497"], ["updated_at", "2019-09-12 13:44:16.088497"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "55"], ["created_at", "2019-09-12 13:44:16.093222"], ["updated_at", "2019-09-12 13:44:16.093222"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "56"], ["created_at", "2019-09-12 13:44:16.097466"], ["updated_at", "2019-09-12 13:44:16.097466"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "57"], ["created_at", "2019-09-12 13:44:16.101494"], ["updated_at", "2019-09-12 13:44:16.101494"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "58"], ["created_at", "2019-09-12 13:44:16.105473"], ["updated_at", "2019-09-12 13:44:16.105473"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "59"], ["created_at", "2019-09-12 13:44:16.108121"], ["updated_at", "2019-09-12 13:44:16.108121"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (1.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "60"], ["created_at", "2019-09-12 13:44:16.112245"], ["updated_at", "2019-09-12 13:44:16.112245"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "61"], ["created_at", "2019-09-12 13:44:16.115978"], ["updated_at", "2019-09-12 13:44:16.115978"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "62"], ["created_at", "2019-09-12 13:44:16.120884"], ["updated_at", "2019-09-12 13:44:16.120884"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "63"], ["created_at", "2019-09-12 13:44:16.124825"], ["updated_at", "2019-09-12 13:44:16.124825"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "64"], ["created_at", "2019-09-12 13:44:16.127340"], ["updated_at", "2019-09-12 13:44:16.127340"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "65"], ["created_at", "2019-09-12 13:44:16.131744"], ["updated_at", "2019-09-12 13:44:16.131744"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "66"], ["created_at", "2019-09-12 13:44:16.135756"], ["updated_at", "2019-09-12 13:44:16.135756"], ["user_id", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "67"], ["created_at", "2019-09-12 13:44:16.140118"], ["updated_at", "2019-09-12 13:44:16.140118"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "68"], ["created_at", "2019-09-12 13:44:16.144806"], ["updated_at", "2019-09-12 13:44:16.144806"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "69"], ["created_at", "2019-09-12 13:44:16.150457"], ["updated_at", "2019-09-12 13:44:16.150457"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "70"], ["created_at", "2019-09-12 13:44:16.154562"], ["updated_at", "2019-09-12 13:44:16.154562"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "71"], ["created_at", "2019-09-12 13:44:16.158448"], ["updated_at", "2019-09-12 13:44:16.158448"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "72"], ["created_at", "2019-09-12 13:44:16.161431"], ["updated_at", "2019-09-12 13:44:16.161431"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "73"], ["created_at", "2019-09-12 13:44:16.163993"], ["updated_at", "2019-09-12 13:44:16.163993"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (1.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "74"], ["created_at", "2019-09-12 13:44:16.167048"], ["updated_at", "2019-09-12 13:44:16.167048"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "75"], ["created_at", "2019-09-12 13:44:16.170994"], ["updated_at", "2019-09-12 13:44:16.170994"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "76"], ["created_at", "2019-09-12 13:44:16.175203"], ["updated_at", "2019-09-12 13:44:16.175203"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "77"], ["created_at", "2019-09-12 13:44:16.179211"], ["updated_at", "2019-09-12 13:44:16.179211"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "78"], ["created_at", "2019-09-12 13:44:16.198829"], ["updated_at", "2019-09-12 13:44:16.198829"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "79"], ["created_at", "2019-09-12 13:44:16.201417"], ["updated_at", "2019-09-12 13:44:16.201417"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "80"], ["created_at", "2019-09-12 13:44:16.204126"], ["updated_at", "2019-09-12 13:44:16.204126"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "81"], ["created_at", "2019-09-12 13:44:16.207077"], ["updated_at", "2019-09-12 13:44:16.207077"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "82"], ["created_at", "2019-09-12 13:44:16.209923"], ["updated_at", "2019-09-12 13:44:16.209923"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "83"], ["created_at", "2019-09-12 13:44:16.212359"], ["updated_at", "2019-09-12 13:44:16.212359"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "84"], ["created_at", "2019-09-12 13:44:16.215128"], ["updated_at", "2019-09-12 13:44:16.215128"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "85"], ["created_at", "2019-09-12 13:44:16.217700"], ["updated_at", "2019-09-12 13:44:16.217700"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "86"], ["created_at", "2019-09-12 13:44:16.220442"], ["updated_at", "2019-09-12 13:44:16.220442"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "87"], ["created_at", "2019-09-12 13:44:16.222951"], ["updated_at", "2019-09-12 13:44:16.222951"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "88"], ["created_at", "2019-09-12 13:44:16.225402"], ["updated_at", "2019-09-12 13:44:16.225402"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "89"], ["created_at", "2019-09-12 13:44:16.228109"], ["updated_at", "2019-09-12 13:44:16.228109"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "90"], ["created_at", "2019-09-12 13:44:16.230386"], ["updated_at", "2019-09-12 13:44:16.230386"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "91"], ["created_at", "2019-09-12 13:44:16.232850"], ["updated_at", "2019-09-12 13:44:16.232850"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "92"], ["created_at", "2019-09-12 13:44:16.236284"], ["updated_at", "2019-09-12 13:44:16.236284"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "93"], ["created_at", "2019-09-12 13:44:16.238794"], ["updated_at", "2019-09-12 13:44:16.238794"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "94"], ["created_at", "2019-09-12 13:44:16.241336"], ["updated_at", "2019-09-12 13:44:16.241336"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "95"], ["created_at", "2019-09-12 13:44:16.243720"], ["updated_at", "2019-09-12 13:44:16.243720"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "96"], ["created_at", "2019-09-12 13:44:16.246582"], ["updated_at", "2019-09-12 13:44:16.246582"], ["user_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "97"], ["created_at", "2019-09-12 13:44:16.249708"], ["updated_at", "2019-09-12 13:44:16.249708"], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "98"], ["created_at", "2019-09-12 13:44:16.252165"], ["updated_at", "2019-09-12 13:44:16.252165"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "99"], ["created_at", "2019-09-12 13:44:16.254809"], ["updated_at", "2019-09-12 13:44:16.254809"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/words" for ::1 at 2019-09-12 22:44:24 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (49.1ms)
+Completed 200 OK in 98ms (Views: 91.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/words?page=4" for ::1 at 2019-09-12 22:44:32 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 75]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 75]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (43.7ms)
+Completed 200 OK in 78ms (Views: 73.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/words?page=2" for ::1 at 2019-09-12 22:45:02 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 25]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 25]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (97.3ms)
+Completed 200 OK in 130ms (Views: 125.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/words?page=2" for ::1 at 2019-09-12 22:45:37 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 25]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 25]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (84.7ms)
+Completed 200 OK in 157ms (Views: 117.7ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 22:45:49 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (26.9ms)
+Completed 200 OK in 87ms (Views: 82.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/words?page=5" for ::1 at 2019-09-12 22:45:51 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 100]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 100]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (21.1ms)
+Completed 200 OK in 57ms (Views: 53.2ms | ActiveRecord: 1.4ms)
+
+
+DEPRECATION WARNING: The -e option is deprecated and will be removed in the near future. Please use the html2slim gem or the html2haml gem to convert erb templates manually. (called from <main> at /Users/kobayashihirokazu/portfolio/wordsheet/bin/rails:9)
+Started GET "/words?page=5" for ::1 at 2019-09-12 23:06:06 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 100]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.8ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 100]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (33.4ms)
+Completed 200 OK in 69ms (Views: 61.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 23:06:10 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.6ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (35.0ms)
+Completed 200 OK in 61ms (Views: 55.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/words" for ::1 at 2019-09-12 23:08:35 +0900
+Processing by WordsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (40.1ms)
+Completed 200 OK in 104ms (Views: 69.6ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/words?page=11" for ::1 at 2019-09-12 23:08:42 +0900
+Processing by WordsController#index as HTML
+  Parameters: {"page"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendering words/index.html.slim within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "words"."id") FROM "words" WHERE "words"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/words/index.html.slim:18
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  DISTINCT "words"."id" AS count_column FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 1], ["LIMIT", 10], ["OFFSET", 100]]
+  ↳ app/views/words/index.html.slim:19
+  [1m[36mWord Load (0.4ms)[0m  [1m[34mSELECT  DISTINCT "words".* FROM "words" WHERE "words"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 10], ["OFFSET", 100]]
+  ↳ app/views/words/index.html.slim:30
+  Rendered words/index.html.slim within layouts/application (58.0ms)
+Completed 200 OK in 83ms (Views: 79.3ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/logout" for ::1 at 2019-09-12 23:08:57 +0900
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SLDG+AavBqWRPTrBylDf6SqVPGD4i6shcKkk5HlrPJlZn/u0FftowlXJ/s+wiF8XJBl9NH17K/Qil3asXd/Zng=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-09-12 23:08:57 +0900
+Processing by WordsController#top as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-09-12 23:08:57 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (4.0ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.0ms)
+
+
