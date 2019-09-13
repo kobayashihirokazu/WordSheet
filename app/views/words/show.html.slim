@@ -11,6 +11,9 @@ table.table.table-hover
       th= Word.human_attribute_name(:name)
       td= @word.name
     tr
+      th= Word.human_attribute_name(:user_name)
+      td= link_to @word.user.name, @word.user
+    tr
       th= Word.human_attribute_name(:description)
       / td= auto_link(simple_format(h(@word.description), {}, sanitize: false, wrapper_tag: "div"))
       td= simple_format(h(@word.description), {}, sanitize: false, wrapper_tag: "div")
@@ -20,6 +23,6 @@ table.table.table-hover
     tr
       th= Word.human_attribute_name(:updated_at)
       td= @word.updated_at
-
-= link_to '編集', edit_word_path, class: 'btn btn-primary mr-3'
-= link_to '削除', @word, method: :delete, data: { confirm: "ワード「#{@word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+- if current_user && current_user.id == @word.user_id
+  = link_to '編集', edit_word_path, class: 'btn btn-primary mr-3'
+  = link_to '削除', @word, method: :delete, data: { confirm: "ワード「#{@word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

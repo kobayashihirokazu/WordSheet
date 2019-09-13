@@ -31,6 +31,8 @@ table.table.table-hover
       tr
         td= link_to word.name, word
         td= word.created_at
-        td
-          = link_to '編集', edit_word_path(word), class: 'btn btn-primary mr-3'
-          = link_to '削除', word, method: :delete, data: { confirm: "タスク「#{word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+        td= link_to word.user.name, word.user
+        td= image_tag(word.user.image, :size =>'50x50')  if word.user.image.attached?
+        / td
+        /   = link_to '編集', edit_word_path(word), class: 'btn btn-primary mr-3'
+        /   = link_to '削除', word, method: :delete, data: { confirm: "タスク「#{word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

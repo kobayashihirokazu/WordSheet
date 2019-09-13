@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'words#top'
+  root to: 'words#index'
   resources :users
   resources :words
   get '/login', to: 'sessions#new'

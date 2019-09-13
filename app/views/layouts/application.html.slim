@@ -12,8 +12,8 @@ html
       .navbar-brand Wordsheet
 
       ul.navbar-nav.ml-auto
+        li.nav-item= link_to 'ワード一覧', words_path, class: 'nav-link'
         - if current_user
-          li.nav-item= link_to 'ワード一覧', words_path, class: 'nav-link'
           li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
         - else

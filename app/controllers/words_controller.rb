@@ -1,14 +1,16 @@
 class WordsController < ApplicationController
-  before_action :set_word, only: [:show, :edit, :update, :destroy]
+  before_action :set_word, only: [:edit, :update, :destroy]
+  skip_before_action :login_required, only: [:index, :show]
 
   def index
     # @words = current_user.words.recent
     # @words = current_user.words <==>  Word.where(user_id: current_user.id)
-    @q = current_user.words.ransack(params[:q])
+    @q = Word.all.ransack(params[:q])
     @words = @q.result(distinct: true).page(params[:page])
   end
 
   def show
+    @word = Word.find(params[:id])
   end
 
   def top
