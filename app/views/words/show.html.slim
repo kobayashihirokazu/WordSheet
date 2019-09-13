@@ -26,3 +26,12 @@ table.table.table-hover
 - if current_user && current_user.id == @word.user_id
   = link_to '編集', edit_word_path, class: 'btn btn-primary mr-3'
   = link_to '削除', @word, method: :delete, data: { confirm: "ワード「#{@word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+- if Like.where(word_id: @word.id).count > 0
+  = link_to "/likes/#{@word.id}/destroy", method: :post do
+    span.fa.fa-heart.like-btn
+  / = link_to 'いいね済', "/likes/#{@word.id}/destroy", method: :post, class: 'btn btn-primary'
+- else
+  = link_to "/likes/#{@word.id}/create", method: :post do
+    span.fa.fa-heart.like-btn
+  / = link_to 'いいね', "/likes/#{@word.id}/create", method: :post, class: 'btn btn-primary mr-3'
+= Like.where(word_id: @word.id).count
