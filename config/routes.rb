@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :words
   # resources :likes
+  resources :relationships, only: [:create, :destroy]
   post "likes/:word_id/create", to: "likes#create"
   post "likes/:word_id/destroy", to: "likes#destroy"
 
