@@ -1,3 +1,17 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sessions-new .flash {
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    bottom: 30px;
+    z-index: 10;
+    width: 40%;
+    height: 20%;
+    border-radius: 0 0 2px 2px;
+    font-size: 16px;
+}

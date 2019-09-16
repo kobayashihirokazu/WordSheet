@@ -11,7 +11,7 @@ html
     .app-title.navbar.navbar-expand-md.navbar-dark
       .navbar-brand= link_to 'Wordsheet', words_path, class: 'nav-link' 
       ul.navbar-nav.ml-auto
-        / li.nav-item= link_to 'ワード一覧', words_path, class: 'nav-link'
+        li.nav-item= link_to 'ワード一覧', words_path, class: 'nav-link'
         - if current_user
           li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
@@ -23,6 +23,6 @@ html
         .alert.alert-success= flash.notice
     = yield
 
-    footer.footer
-      | Wordsheet
+    / footer.footer
+    /   | Wordsheet
 

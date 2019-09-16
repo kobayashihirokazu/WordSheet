@@ -49,3 +49,14 @@
     line-height: 50px;
     color: #000;
 }
+
+.words-index .form-group input{
+    float: left;
+    position: relative;
+    left: 90px;
+    bottom: 20px;
+}
+
+.words-index .form-group input[type="search"]{
+    width:70%;
+}
