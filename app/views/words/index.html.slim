@@ -10,18 +10,19 @@
     .page_entry
       = page_entries_info @words
     - @words.each do |word|
-      .words-index-item
-        .word-left
-          = link_to word.user
-            = image_tag word.user.image, :size =>'50x50' if word.user.image.attached?
-        .word-right
-          span.mgr-20
-            = link_to word.name, word
-          span.mgr-10
-            | by &nbsp;
-            = word.user.name
-          | いいね &nbsp;
-          = Like.where(word_id: word.id).count
+        .words-index-item
+          .word-left
+            = link_to word.user
+              = image_tag word.user.image, :size =>'50x50' if word.user.image.attached?
+          = link_to word do
+            .word-right
+              span.mgr-20
+                = word.name
+              span.mgr-10
+                | by &nbsp;
+                = word.user.name
+              | いいね &nbsp;
+              = Like.where(word_id: word.id).count
     ul
       = paginate @words
 
