@@ -1,40 +1,40 @@
-h1 ワード一覧
-
-= search_form_for @q, class: 'mb-5' do |f|
-  .form-group.row
-    = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
-    .col-sm-10  
-      = f.search_field :name_cont, class: 'form-control'
-  .form-group.row
-    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
-    .col-sm-10  
-      = f.search_field :created_at_gteq, class: 'form-control'
-  .form-group
-    = f.submit class: 'btn btn-outline-primary'
-
-= link_to '新規登録', new_word_path, class: 'btn btn-primary'
-
-.mb-3
-  = paginate @words
-  = page_entries_info @words
-  
-table.table.table-hover
-  thead.thead-default
-    tr
-      th= sort_link(@q, :name)
-      / th= Word.human_attribute_name(:name)
-      th= sort_link(@q, :created_at)
-      / th= Word.human_attribute_name(:created_at)
-      th= 'いいね'
-  tbody
+.main.words-index
+  .container
+    .form-body
+      = search_form_for @q, class: 'mb-1' do |f|
+        .form-group.row
+          .col-sm-9  
+            = f.search_field :name_cont, class: 'form-control'
+          .col-sm-3
+            = f.submit class: 'btn btn-outline-primary'
+    .page_entry
+      = page_entries_info @words
     - @words.each do |word|
-      tr
-        td= link_to word.name, word
-        td= word.created_at
-        td= Like.where(word_id: word.id).count
-        td= link_to word.user.name, word.user
-        td= image_tag word.user.image, :size =>'50x50' if word.user.image.attached?
+        .words-index-item
+          .word-left
+            = link_to word.user
+              = image_tag word.user.image, :size =>'50x50' if word.user.image.attached?
+          = link_to word do
+            .word-right
+              span.mgr-20
+                = word.name
+              span.mgr-10
+                | by &nbsp;
+                = word.user.name
+              | いいね &nbsp;
+              = Like.where(word_id: word.id).count
+    ul
+      = paginate @words
 
-        / td
-        /   = link_to '編集', edit_word_path(word), class: 'btn btn-primary mr-3'
-        /   = link_to '削除', word, method: :delete, data: { confirm: "タスク「#{word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+/ = link_to '新規登録', new_word_path, class: 'btn btn-primary'
+  
+/ thead.thead-default
+/   tr
+/     th= sort_link(@q, :name)
+/     / th= Word.human_attribute_name(:name)
+/     th= sort_link(@q, :created_at)
+/     / th= Word.human_attribute_name(:created_at)
+/     th= 'いいね'
+/         / td
+/         /   = link_to '編集', edit_word_path(word), class: 'btn btn-primary mr-3'
+/         /   = link_to '削除', word, method: :delete, data: { confirm: "タスク「#{word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
