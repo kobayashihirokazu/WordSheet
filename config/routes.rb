@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root to: 'words#index'
   resources :users
   resources :words
-  # resources :likes
-  resources :relationships, only: [:create, :destroy]
+    # resource :likes, only: [:create, :destroy]
   post "likes/:word_id/create", to: "likes#create"
   post "likes/:word_id/destroy", to: "likes#destroy"
+
+  resources :relationships, only: [:create, :destroy]
+
+  get "users/:id/likes", to: "users#likes"
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

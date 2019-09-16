@@ -1,0 +1,43 @@
+.main.user-show
+  .container
+    .user
+      = image_tag @user.image, :size =>'50x50' if @user.image.attached?
+      h2 
+        = @user.name
+      p 
+        = @user.email
+      - if current_user && current_user.id == @user.id
+        = link_to '編集', edit_user_path, class: 'btn btn-primary'
+      - if current_user && current_user.id != @user.id
+        - if current_user.following?(@user)
+          = form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f|
+            = f.hidden_field :follow_id, value: @user.id
+            = f.submit 'フォロー中', class: 'btn btn-primary mr-3'
+        - else
+          = form_for(current_user.relationships.build) do |f|
+            = f.hidden_field :follow_id, value: @user.id
+            = f.submit 'フォロー', class: 'btn btn-primary mr-3'
+
+    ul.user-tabs
+      li
+        = link_to '投稿', @user
+      li.active
+        = link_to 'いいね！', "/users/#{@user.id}/likes"
+
+    - @likes.each do |like|
+        - word = Word.find_by(id: like.word_id)
+        .words-index-item
+          .word-left
+            = link_to word.user
+              = image_tag word.user.image, :size =>'50x50' if word.user.image.attached?
+          = link_to word do
+            .word-right
+              span.mgr-20
+                = word.name
+              span.mgr-10
+                | by &nbsp;
+                = word.user.name
+              | いいね &nbsp;
+              = Like.where(word_id: word.id).count
+    ul
+      = paginate @likes
