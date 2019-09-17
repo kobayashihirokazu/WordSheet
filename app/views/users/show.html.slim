@@ -18,11 +18,17 @@
         = form_for(current_user.relationships.build) do |f|
           = f.hidden_field :follow_id, value: @user.id
           = f.submit 'フォロー', class: 'btn btn-primary mr-3'
+          
     ul.user-tabs
       li.active
-        = link_to '投稿', @user
+        = link_to "投稿 #{@user.count_words}", @user
       li
         = link_to 'いいね！', "/users/#{@user.id}/likes"
+      li
+        = link_to "フォロー中 #{@user.count_followings}", "/users/#{@user.id}/followings"
+      li
+        = link_to "フォロワー #{@user.count_followers}", "/users/#{@user.id}/followers"
+      
     - @words.each do |word|
       .words-index-item
         .word-left

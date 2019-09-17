@@ -27,7 +27,15 @@ class User < ApplicationRecord
       self.followings.include?(other_user)
     end
 
+    def count_words
+      self.words.count
+    end
+
     def count_followers
       self.followers.count
+    end
+
+    def count_followings
+      self.followings.count
     end
 end

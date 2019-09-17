@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   get "users/:id/likes", to: "users#likes"
+  get "users/:id/followings", to: "users#followings"
+  get "users/:id/followers", to: "users#followers"
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

@@ -3,7 +3,7 @@ class Word < ApplicationRecord
     validate :validate_name_not_including_comma
   
     belongs_to :user
-    has_many :likes
+    has_many :likes, :dependent => :destroy
 
     scope :recent, -> { order(created_at: :desc) }
   

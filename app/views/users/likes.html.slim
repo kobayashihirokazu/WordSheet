@@ -20,9 +20,13 @@
 
     ul.user-tabs
       li
-        = link_to '投稿', @user
+        = link_to "投稿 #{@user.count_words}", @user
       li.active
         = link_to 'いいね！', "/users/#{@user.id}/likes"
+      li
+        = link_to "フォロー中 #{@user.count_followings}", "/users/#{@user.id}/followings"
+      li
+        = link_to "フォロワー #{@user.count_followers}", "/users/#{@user.id}/followers"
 
     - @likes.each do |like|
         - word = Word.find_by(id: like.word_id)
