@@ -1,50 +1,28 @@
-.main.user-show
+.main.users-show
   .container
-    .user
-      = image_tag @user.image, :size =>'50x50' if @user.image.attached?
-      h2 
-        = @user.name
-      p 
-        = @user.email
-
-    - if current_user && current_user.id == @user.id
-      = link_to '編集', edit_user_path, class: 'btn btn-primary'
-    - if current_user && current_user.id != @user.id
-      - if current_user.following?(@user)
-        = form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f|
-          = f.hidden_field :follow_id, value: @user.id
-          = f.submit 'フォロー中', class: 'btn btn-primary mr-3'
-      - else
-        = form_for(current_user.relationships.build) do |f|
-          = f.hidden_field :follow_id, value: @user.id
-          = f.submit 'フォロー', class: 'btn btn-primary mr-3'
+    = render partial: 'show', locals: { user: @user }
     ul.user-tabs
       li
         = link_to "投稿 #{@user.count_words}", @user
       li
-        = link_to 'いいね！', "/users/#{@user.id}/likes"
+        = link_to 'いいね！', likes_user_path
       li.active
-        = link_to "フォロー中 #{@user.count_followings}", "/users/#{@user.id}/followings"
+        = link_to "フォロー中 #{@user.count_followings}", followings_user_path
       li
-        = link_to "フォロワー #{@user.count_followers}", "/users/#{@user.id}/followers"
+        = link_to "フォロワー #{@user.count_followers}", followers_user_path
       
     - @followings.each do |user|
       .words-index-item
         .word-left
           = link_to user
             = image_tag user.image, :size =>'50x50' if user.image.attached?
-        .word-right
-          
+        .word-right    
           span.mgr-20
             = user.name
-          - if current_user && current_user.id != user.id
-            - if current_user.following?(user)
-              = form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f|
-                = f.hidden_field :follow_id, value: user.id
-                = f.submit 'フォロー中', class: 'btn btn-primary mr-3'
-            - else
-              = form_for(current_user.relationships.build) do |f|
-                = f.hidden_field :follow_id, value: user.id
-                = f.submit 'フォロー', class: 'btn btn-primary mr-3'
+            - if current_user && current_user.id != @user.id
+                - if current_user.following?(@user)
+                    = link_to 'フォロー解除', user_relationships_path(@user.id), method: :delete, class: 'btn btn-primary mx-4'
+                - else   
+                    = link_to 'フォロー', user_relationships_path(@user.id), method: :post, class: 'btn btn-primary mx-4'
     ul
       = paginate @followings
