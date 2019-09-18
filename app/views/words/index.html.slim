@@ -2,11 +2,14 @@
   .container
     .form-body
       = search_form_for @q, class: 'mb-1' do |f|
-        .form-group.row
-          .col-sm-9  
-            = f.search_field :name_cont, class: 'form-control'
-          .col-sm-3
-            = f.submit class: 'btn btn-outline-primary'
+        / .form-group.row
+        /   .col-sm-9  
+        /     = f.search_field :name_cont, class: 'form-control', type: 'search', placeholder: "キーワードを入力"
+        /   .col-sm-3
+        /     = f.submit class: 'btn btn-primary'
+        .form-group
+            = f.search_field :name_cont, class: 'form-control', type: 'search', placeholder: "キーワードを入力"
+            = f.submit class: 'btn btn-primary'
     .page_entry
       = page_entries_info @words
     - @words.each do |word|
@@ -23,6 +26,10 @@
                 = word.user.name
               | いいね &nbsp;
               = Like.where(word_id: word.id).count
+          .text-right
+            p
+              |🕒
+              = word.created_at.strftime('%Y/%m/%d')
     ul
       = paginate @words
 

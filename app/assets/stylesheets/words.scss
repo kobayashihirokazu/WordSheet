@@ -49,3 +49,23 @@
     line-height: 50px;
     color: #000;
 }
+
+.words-index .form-group input{
+    float: left;
+    position: relative;
+    left: 90px;
+    bottom: 20px;
+}
+
+.words-index .form-group input[type="search"]{
+    width:70%;
+}
+/* words/show ================================ */
+.word-form {
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 2px 6px #c1ced7;
+    position: relative;
+    top: 20px;
+}

@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :login_required, only: [:new, :create, :show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :likes, :followings, :followers]
+  skip_before_action :login_required, only: [:new, :create, :show, :likes]
 
   def index
     @users = User.all
   end
 
   def show
+    @q = Word.where(user_id: @user.id).ransack(params[:q])
+    @words = @q.result(distinct: true).page(params[:page])
   end
 
   def new
@@ -37,6 +39,21 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_url, notice: "ユーザ「#{@user.name}」を削除しました。"
+  end
+
+  def likes
+    @q = Like.where(user_id: @user.id).ransack(params[:q])
+    @likes = @q.result(distinct: true).page(params[:page])
+  end
+
+  def followings
+    @q = @user.followings.ransack(params[:q])
+    @followings = @q.result(distinct: true).page(params[:page])
+  end
+
+  def followers
+    @q = @user.followers.ransack(params[:q])
+    @followers = @q.result(distinct: true).page(params[:page])
   end
 
   private
