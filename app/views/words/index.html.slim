@@ -26,6 +26,10 @@
                 = word.user.name
               | いいね &nbsp;
               = Like.where(word_id: word.id).count
+          .text-right
+            p
+              |🕒
+              = word.created_at.strftime('%Y/%m/%d')
     ul
       = paginate @words
 
