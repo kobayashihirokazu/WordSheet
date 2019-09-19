@@ -1,8 +1,5 @@
 .main.sessions-new
   .container
-    .flash
-      - if flash[:alert]
-        .alert.alert-danger= flash.alert
     .form
       .form-body
         = form_with scope: :session, local: true do |f|

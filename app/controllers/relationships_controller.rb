@@ -1,29 +1,22 @@
 class RelationshipsController < ApplicationController
-    before_action :set_user
 
     def create
-      @user = User.find(params[:relationship][:follow_id])
-      following = current_user.follow(@user)
+      following = current_user.relationships.build(follow_id: params[:user_id])
+      user = User.find_by(id: params[:show_user_id])
       if following.save
-        redirect_to @user, notice: 'ユーザーをフォローしました'
+        redirect_to user, notice: 'ユーザーをフォローしました'
       else
-        redirect_to @user, alert: 'ユーザーをフォローに失敗しました'
+        redirect_to user, alert: 'ユーザーをフォローに失敗しました'
       end
     end
   
     def destroy
-      @user = User.find(params[:relationship][:follow_id])
-      following = current_user.unfollow(@user)
+      following = current_user.relationships.find_by(follow_id: params[:user_id])
+      user = User.find_by(id: params[:show_user_id])
       if following.destroy
-        redirect_to @user, notice: 'ユーザーのフォローを解除しました'
+        redirect_to user, notice: 'ユーザーのフォローを解除しました'
       else
-        redirect_to @user, alert: 'ユーザーのフォロー解除に失敗しました'
+        redirect_to user, alert: 'ユーザーのフォロー解除に失敗しました'
       end
-    end
-  
-    private
-  
-    def set_user
-      @user = User.find(params[:relationship][:follow_id])
     end
 end
