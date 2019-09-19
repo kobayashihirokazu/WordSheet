@@ -22,17 +22,18 @@
       / = simple_format(h(markdown(@word.description)), {}, sanitize: false, wrapper_tag: "div")
       = markdown(@word.description)
       .mt-5
-        - unless current_user.id == @word.user.id
-          - if Like.where(word_id: @word.id).count > 0
-            = link_to word_likes_path(@word.id), method: :delete do
-              p style="display: inline-block; font-size: 20px;"
-                | &#x2764;
-            | いいね済
-          - else
-            = link_to word_likes_path(@word.id), method: :post do
-              p style="display: inline-block; font-size: 25px;"
-                | &#x2661;
-            | いいね！
+        - if current_user
+          - unless current_user.id == @word.user.id
+            - if Like.where(word_id: @word.id).count > 0
+              = link_to word_likes_path(@word.id), method: :delete do
+                p style="display: inline-block; font-size: 20px;"
+                  | &#x2764;
+              | いいね済
+            - else
+              = link_to word_likes_path(@word.id), method: :post do
+                p style="display: inline-block; font-size: 25px;"
+                  | &#x2661;
+              | いいね！
         
 / .nav.justify-content-end
 /   = link_to '一覧', words_path, class: 'nav-link'
