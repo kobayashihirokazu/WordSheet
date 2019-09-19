@@ -1,5 +1,6 @@
 class Word < ApplicationRecord
     validates :name, presence: true, length: { maximum: 30 }
+    validates :description, presence: true
     validate :validate_name_not_including_comma
   
     belongs_to :user
@@ -10,7 +11,9 @@ class Word < ApplicationRecord
     paginates_per 10
 
     def user
-      User.find(self.user_id)
+      if self.user_id
+        User.find(self.user_id)
+      end
     end
 
     def self.ransackable_attributes(auth_object = nil)

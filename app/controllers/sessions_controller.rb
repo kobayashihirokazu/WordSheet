@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: session_params[:email])
 
     if @user&.authenticate(session_params[:password])
-      @session[:user_id] = @user.id
+      session[:user_id] = @user.id
       redirect_to words_path, notice: 'ログインしました。'
     else
       flash[:alert] = 'メールアドレスまたはパスワードが間違っています'
