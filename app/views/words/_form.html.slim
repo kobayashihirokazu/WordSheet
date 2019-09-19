@@ -1,10 +1,11 @@
 .main.words-show
   .container.mt-5
-    - if word.errors.present?
-      ul#error_explanation
-        - word.errors.full_messages.each do |message|
-          li= message
     .word-form.p-5
+      .form-error
+        - if @word.errors.present?
+          ul#error_explanation
+            - @word.errors.full_messages.each do |message|
+              li= message
       = form_with model: @word, local: true do |f|
         .form-group
           = f.label :name

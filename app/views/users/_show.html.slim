@@ -3,12 +3,12 @@
     h2 
     = @user.name
     p 
-    = @user.email
+    = "email: #{@user.email}"
 
 - if current_user && current_user.id == @user.id
     = link_to '編集', edit_user_path, class: 'btn btn-primary'
 - if current_user && current_user.id != @user.id
     - if current_user.following?(@user)
-        = link_to 'フォロー解除', user_relationships_path(@user.id), method: :delete, class: 'btn btn-primary'
+        = link_to 'フォロー解除', user_relationships_path(@user.id, :show_user_id => @user.id), method: :delete, class: 'btn btn-primary'
     - else   
-        = link_to 'フォロー', user_relationships_path(@user.id), method: :post, class: 'btn btn-primary'
+        = link_to 'フォロー', user_relationships_path(@user.id, :show_user_id => @user.id), method: :post, class: 'btn btn-primary'
