@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
     # skip_before_action :login_required
     before_action :set_word_id, only: [:create, :destroy]
+    before_action :check_self_like
 
     def new
     end
@@ -25,6 +26,13 @@ class LikesController < ApplicationController
 
     def set_word_id
         @word_id = params[:word_id]
+    end
+
+    def check_self_like
+      @word = Word.find(@word_id)
+      if current_user.id  == @word.user_id
+        redirect_to login_path
+      end
     end
 
   end

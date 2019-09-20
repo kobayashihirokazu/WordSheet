@@ -25,36 +25,12 @@
         - if current_user
           - unless current_user.id == @word.user.id
             - if Like.where(word_id: @word.id).count > 0
-              = link_to word_likes_path(@word.id), method: :delete do
+              = link_to word_likes_path(@word.id), method: :delete, id: 'いいね解除' do
                 p style="display: inline-block; font-size: 20px;"
                   | &#x2764;
               | いいね済
             - else
-              = link_to word_likes_path(@word.id), method: :post do
+              = link_to word_likes_path(@word.id), method: :post, id: 'いいね' do
                 p style="display: inline-block; font-size: 25px;"
                   | &#x2661;
               | いいね！
-        
-/ .nav.justify-content-end
-/   = link_to '一覧', words_path, class: 'nav-link'
-/ table.table.table-hover
-/   tbody
-/     tr
-/       th= Word.human_attribute_name(:id)
-/       td= @word.id
-/     tr
-/       th= Word.human_attribute_name(:name)
-/       td= @word.name
-/     tr
-/       th= Word.human_attribute_name(:user_name)
-/       td= link_to @word.user.name, @word.user
-/     tr
-/       th= Word.human_attribute_name(:description)
-/       / td= auto_link(simple_format(h(@word.description), {}, sanitize: false, wrapper_tag: "div"))
-/       td= simple_format(h(markdown(@word.description)), {}, sanitize: false, wrapper_tag: "div")
-/     tr
-/       th= Word.human_attribute_name(:created_at)
-/       td= @word.created_at
-/     tr
-/       th= Word.human_attribute_name(:updated_at)
-/       td= @word.updated_at
