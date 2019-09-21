@@ -1,0 +1,36 @@
+.main.words-show
+  .container.mt-5
+    h1.mx-3
+      = @word.name
+    ul.list-inline
+      li.list-inline-item.mx-3
+        = link_to @word.user
+          = image_tag @word.user.image, :size =>'50x50' if @word.user.image.attached?
+      li.list-inline-item.mx-2
+        = @word.user.name
+      - if current_user && current_user.id == @word.user_id
+        li.list-inline-item.mx-3
+          = link_to '編集', edit_word_path, class: 'btn btn-primary mr-3'
+        li.list-inline-item
+          = link_to '削除', @word, method: :delete, data: { confirm: "ワード「#{@word.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+      li.list-inline-item.mx-3
+        = "いいね！ #{Like.where(word_id: @word.id).count}"
+      li.list-inline-item.mx-3
+        = "最終更新日 #{@word.updated_at.strftime('%Y/%m/%d')}"
+
+    .word-form.p-5
+      / = simple_format(h(markdown(@word.description)), {}, sanitize: false, wrapper_tag: "div")
+      = markdown(@word.description)
+      .mt-5
+        - if current_user
+          - unless current_user.id == @word.user.id
+            - if Like.where(word_id: @word.id).count > 0
+              = link_to word_likes_path(@word.id), method: :delete, id: 'いいね解除' do
+                p style="display: inline-block; font-size: 20px;"
+                  | &#x2764;
+              | いいね済
+            - else
+              = link_to word_likes_path(@word.id), method: :post, id: 'いいね' do
+                p style="display: inline-block; font-size: 25px;"
+                  | &#x2661;
+              | いいね！

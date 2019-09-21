@@ -1,0 +1,12 @@
+.main.sessions-new
+  .container
+    .form
+      .form-body
+        = form_with scope: :session, local: true do |f|
+          .form-group
+            = f.label :email, 'メールアドレス'
+            = f.text_field :email, class: 'form-control', id: 'session_email', size: "40x3"
+          .form-group
+            = f.label :password, 'パスワード'
+            = f.password_field :password, class: 'form-control', id: 'session_password', size: "40x3"
+          = f.submit 'ログイン', class: 'btn btn-primary'

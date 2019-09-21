@@ -1,0 +1,28 @@
+.main.users-show
+  .container
+    = render partial: 'show', locals: { user: @user }
+    ul.user-tabs
+      li
+        = link_to "投稿 #{@user.count_words}", @user
+      li
+        = link_to 'いいね！', likes_user_path
+      li
+        = link_to "フォロー中 #{@user.count_followings}", followings_user_path
+      li.active
+        = link_to "フォロワー #{@user.count_followers}", followers_user_path
+      
+    - @followers.each do |user|
+      .words-index-item
+        .word-left
+          = link_to user
+            = image_tag user.image, :size =>'50x50' if user.image.attached?
+        .word-right
+          span.mgr-20
+            = user.name
+            - if current_user && current_user.id != user.id
+                - if current_user.following?(user)
+                    = link_to 'フォロー解除', user_relationships_path(user.id, :show_user_id => @user.id), method: :delete, id: "フォロー解除#{user.id}", class: 'btn btn-primary mx-4'
+                - else   
+                    = link_to 'フォロー', user_relationships_path(user.id, :show_user_id => @user.id), method: :post, id: "フォロー#{user.id}", class: 'btn btn-primary mx-4'
+    ul
+      = paginate @followers

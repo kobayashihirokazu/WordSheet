@@ -1,0 +1,71 @@
+// Place all the styles related to the words controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* words/index ================================ */
+.words-index-item {
+    padding: 15px 20px;
+    margin: 5px 20px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #c1ced7;
+    z-index: 1;
+}
+
+.words-index-item:hover {
+    filter:alpha(opacity=70);/* IE 6,7*/
+    -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+    -moz-opacity:0.7;/* FF , Netscape */
+    -khtml-opacity: 0.7;/* Safari 1.x */
+    opacity:0.7;
+    zoom:1;/*IE*/
+}
+.word-left img {
+    width: 50px;
+    height: 50px;
+    border-radius: 40%;
+    box-shadow: 0 2px 6px #c1ced7;
+    object-fit: cover;
+    z-index: 3;
+}
+
+.word-user-name a {
+    font-weight: 600;
+}
+
+.word-user-name a:hover {
+    color: #3ecdc6;
+}
+
+.word-left {
+    float: left;
+    width: 10%;
+}
+
+.word-right {
+    float: left;
+    width: 90%;
+    padding-left: 25px;
+    text-align: left;
+    line-height: 50px;
+    color: #000;
+}
+
+.words-index .form-group input{
+    float: left;
+    position: relative;
+    left: 90px;
+    bottom: 20px;
+}
+
+.words-index .form-group input[type="search"]{
+    width:70%;
+}
+/* words/show ================================ */
+.word-form {
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 2px 6px #c1ced7;
+    position: relative;
+    top: 20px;
+}

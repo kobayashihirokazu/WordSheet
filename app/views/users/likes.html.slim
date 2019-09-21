@@ -1,0 +1,30 @@
+.main.users-show
+  .container
+    = render partial: 'show', locals: { user: @user }
+    ul.user-tabs
+      li
+        = link_to "投稿 #{@user.count_words}", @user
+      li.active
+        = link_to 'いいね！', likes_user_path
+      li
+        = link_to "フォロー中 #{@user.count_followings}", followings_user_path
+      li
+        = link_to "フォロワー #{@user.count_followers}", followers_user_path
+
+    - @likes.each do |like|
+        - word = Word.find_by(id: like.word_id)
+        .words-index-item
+          .word-left
+            = link_to word.user
+              = image_tag word.user.image, :size =>'50x50' if word.user.image.attached?
+          = link_to word do
+            .word-right
+              span.mgr-20
+                = word.name
+              span.mgr-10
+                | by &nbsp;
+                = word.user.name
+              | いいね &nbsp;
+              = Like.where(word_id: word.id).count
+    ul
+      = paginate @likes

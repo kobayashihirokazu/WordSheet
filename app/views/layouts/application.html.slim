@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title
+      | Wordsheet
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    .app-title.navbar.navbar-expand-md.navbar-dark
+      .navbar-brand= link_to 'Wordsheet', words_path, class: 'nav-link' 
+      ul.navbar-nav.ml-auto
+        li.nav-item= link_to 'ワード一覧', words_path, class: 'nav-link'
+        - if current_user
+          li.nav-item= link_to '新規投稿',  new_word_path, class: 'nav-link'
+          / li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
+          li.nav-item= link_to 'プロフィール', current_user, class: 'nav-link'
+          li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - else
+          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+          li.nav-item= link_to '新規登録', new_user_path, class: 'nav-link'
+    .flash
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
+      - if flash[:alert]
+        .alert.alert-danger= flash.alert
+    = yield
+
+    footer.footer
+      | Wordsheet
+
