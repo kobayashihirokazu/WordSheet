@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     name { 'テストユーザー' }
     sequence(:email) { |n| "tester#{n}@example.com" }
-    password { 'password' }
+		sequence(:password) { |n| "password#{n}" }
 		trait :with_words do
 			after(:create) { |user| create_list(:word, 5, user: user)}
 		end

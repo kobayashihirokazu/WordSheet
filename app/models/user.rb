@@ -5,9 +5,9 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
 
     has_one_attached :image
-    has_many :words
-    has_many :likes
-    has_many :relationships
+    has_many :words, :dependent => :destroy
+    has_many :likes, :dependent => :destroy
+    has_many :relationships, :dependent => :destroy
     has_many :followings, through: :relationships, source: :follow
     has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
     has_many :followers, through: :reverse_of_relationships, source: :user
@@ -15,9 +15,9 @@ class User < ApplicationRecord
     paginates_per 10
 
     def follow(other_user)
-        unless self == other_user
-          self.relationships.find_or_create_by(follow_id: other_user.id)
-        end
+      unless self == other_user
+        self.relationships.find_or_create_by(follow_id: other_user.id)
+      end
     end
   
     # def unfollow(other_user)

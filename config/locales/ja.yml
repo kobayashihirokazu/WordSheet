@@ -14,7 +14,7 @@ ja:
         id: ID
         name: 名称
         user_name: 作成者
-        description: 詳しい説明
+        description: 内容
         created_at: 登録日時
         updated_at: 更新日時
       user:

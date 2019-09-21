@@ -27,7 +27,7 @@ class WordsController < ApplicationController
     @word = current_user.words.new(word_params)
 
     if @word.save
-      redirect_to @word, notice: "タスク「#{@word.name}」を登録しました。"
+      redirect_to @word, notice: "投稿「#{@word.name}」を登録しました。"
     else
       render :new
     end
@@ -35,7 +35,7 @@ class WordsController < ApplicationController
 
   def update
     if @word.update(word_params)
-      redirect_to words_url, notice: "タスク「#{@word.name}」を更新しました。"
+      redirect_to words_url, notice: "投稿「#{@word.name}」を更新しました。"
     else
       render :new
     end
@@ -43,7 +43,7 @@ class WordsController < ApplicationController
 
   def destroy
     @word.destroy
-    redirect_to words_url, notice: "タスク「#{@word.name}」を削除しました。"
+    redirect_to words_url, notice: "投稿「#{@word.name}」を削除しました。"
   end
 
   private
@@ -54,6 +54,5 @@ class WordsController < ApplicationController
 
   def set_word
     @word = current_user.words.find(params[:id])
-    # @word = Word.find(params[:id])
   end
 end

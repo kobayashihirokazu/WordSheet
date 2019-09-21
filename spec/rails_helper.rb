@@ -55,8 +55,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include Devise::Test::ControllerHelpers, :type => :controller
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } #support directoryをrequire
-  config.include RequestSpecHelper, type: :request #type: :requestのときにRequestHelperをinclude
-
+  config.include RequestSpecHelper, type: :request
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
