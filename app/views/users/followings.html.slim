@@ -21,8 +21,8 @@
             = user.name
             - if current_user && current_user.id != user.id
                 - if current_user.following?(user)
-                    = link_to 'フォロー解除', user_relationships_path(user.id, :show_user_id => @user.id), method: :delete, class: 'btn btn-primary mx-4'
+                    = link_to 'フォロー解除', user_relationships_path(user.id, :show_user_id => @user.id), method: :delete, id: "フォロー解除#{user.id}", class: 'btn btn-primary mx-4'
                 - else   
-                    = link_to 'フォロー', user_relationships_path(user.id, :show_user_id => @user.id), method: :post, class: 'btn btn-primary mx-4'
+                    = link_to 'フォロー', user_relationships_path(user.id, :show_user_id => @user.id), method: :post, id: "フォロー#{user.id}", class: 'btn btn-primary mx-4'
     ul
       = paginate @followings
