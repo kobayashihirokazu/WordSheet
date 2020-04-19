@@ -1,24 +1,18 @@
-# README
+# Wordsheet
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Description
+An application that allows you to post a word and its description. You can browse the posts of users you follow and add :heart: the posts. -> [https://wordsheet.herokuapp.com]
 
-Things you may want to cover:
+# Demo
+<img src="https://gyazo.com/cc23b3a92422a575073357bf00c69228.gif" width=50%>
 
-* Ruby version
+# Requirement
+* Ruby 2.6.3
+* Rails 5.2.3
+* PostgreSQL 11.5
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Usage
+1.  ```cd wordsheet```
+2.  ```rails db:create```
+3.  ```rails s```
