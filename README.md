@@ -10,9 +10,10 @@ An application that allows you to post a word and its description. You can brows
 # Requirement
 * Ruby 2.6.3
 * Rails 5.2.3
-* PostgreSQL 11.5
+* MySQL2 0.5.3
 
 # Usage
-1.  ```cd wordsheet```
-2.  ```rails db:create```
-3.  ```rails s```
+```cd wordsheet```
+```bundle install```
+```rails db:create```
+```rails s```
