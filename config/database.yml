@@ -89,4 +89,7 @@ test:
 #
 production:
   <<: *default
+  host: 10.0.2.10
   database: wordsheet_production
+  usename: hirokoba
+  password:
