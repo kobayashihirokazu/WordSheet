@@ -159,7 +159,8 @@ GEM
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
     public_suffix (4.0.4)
-    puma (3.12.4)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -301,7 +302,7 @@ DEPENDENCIES
   material_icons
   materialize-sass (~> 1.0.0)
   mysql2
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   ransack
   redcarpet (~> 2.3.0)
